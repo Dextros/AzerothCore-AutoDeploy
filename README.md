@@ -142,3 +142,5 @@ To use these, log into the game client on an account with GM permissions, hit En
 - .instance unbind all
   - What it does: Wipes all raid and heroic dungeon save locks from your target character.
   - Tip: Essential if you are testing dungeon scripts or boss mechanics and don't want to wait a week for the standard instance lock reset.
+
+ Full list of PlayerBot Commands here - https://github.com/mod-playerbots/mod-playerbots/wiki/Playerbot-Commands 
