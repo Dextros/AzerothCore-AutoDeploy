@@ -83,7 +83,7 @@ cd ~
 
 # Download and execute the installer script
 # (Replace the link below with your actual GitHub raw script URL once uploaded)
-curl -O [https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/setup_acore.sh](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/setup_acore.sh)
+curl -O [https://raw.githubusercontent.com/Dextros/AzerothCore-AutoDeploy/refs/heads/main/setup_acore.sh](https://raw.githubusercontent.com/Dextros/AzerothCore-AutoDeploy/refs/heads/main/setup_acore.sh)
 chmod +x setup_acore.sh
 ./setup_acore.sh
 ```
