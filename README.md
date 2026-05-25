@@ -1,1 +1,121 @@
-# AzerothCore-AutoDeploy
+# 🛠️ Automated AzerothCore + Playerbots Installer for Debian 13
+
+An all-in-one automated script to deploy a pristine **AzerothCore (WoW 3.3.5a) server with integrated Playerbots** on a fresh Debian 13 environment. This project is tailored for home labs, private networks, and single-player progression realms.
+
+🎬 **[Watch the Complete Video Walkthrough on YouTube](YOUR_YOUTUBE_LINK_HERE)**
+
+---
+
+## 🛑 Critical Security Warning
+
+> [!WARNING]
+> **LAN USE ONLY:** This setup framework runs operations under the **`root`** account and configures SSH for direct root access. This is a deliberate security trade-off for installation simplicity. **Do not expose this server to the internet.** Keep it strictly inside your private local network. An updated version supporting non-root service users is currently under development.
+
+---
+
+## 📦 Required Resources
+
+Before starting, download the necessary files to your local machine:
+
+### 1. Server Environment
+* **Operating System:** [Debian 13 AMD64 Netinst ISO](https://mirror.cogentco.com/debian-cd/current/amd64/iso-cd/) *(Note: Avoid the `edu` and `mac` variants).*
+* **Virtualization Software:** You can run this on any hypervisor. Popular choices include **unRaid (VMs)**,  VirtualBox, or VMware Workstation.
+
+### 2. Client & Addons
+* **Game Client:** [WotLK 3.3.5a Clean Client via ChromieCraft](https://chromiecraft.com/en/downloads/)
+* **Addons:** [ChromieCraft 3.3.5a Addons Listing](https://felbite.com/chromiecraft-addons/)
+* **Bot Control Addon:** [Unbot Addon (English Branch)](https://github.com/noisiver/unbot-addon/tree/english) *(Essential for commanding your playerbots in-game).*
+
+---
+
+## 📑 Step-by-Step Installation Guide
+
+### Step 1: Base OS Installation
+1. Boot your virtual machine using the downloaded Debian 13 ISO.
+2. Follow the standard text installation prompts. 
+3. **Important:** When selecting software components, **do not install a desktop environment**. Ensure that **SSH Server** and **Standard System Utilities** are checked.
+4. Finish installation, remove the installation media, and reboot.
+
+### Step 2: Initial Login & Enable SSH Root Access
+Log directly into your server through your hypervisor console, then elevate to the root user and unlock remote SSH terminal connections:
+
+```bash
+# Elevate to root account
+su root
+
+# Enable root login over SSH and restart the service
+sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && service sshd restart
+```
+
+### Step 3: Configure a Static IP Address
+To ensure you don't lose track of your server across reboots, assign it a permanent static IP address. 
+
+1. Run this helper command to automatically generate the correct network block configuration matching your current network settings:
+   ```bash
+   IFACE=$(ip -o -4 addr show | grep -v ' lo ' | awk '{print $2}' | head -n1); echo -e "auto $IFACE\niface $IFACE inet static\n address $(ip -o -4 addr show | grep -v ' lo ' | awk '{print $4}' | head -n1)\n gateway $(ip route | awk '/default/ {print $3}')\n dns-nameservers $(grep -v -E '^#|^$' /etc/resolv.conf | awk '/nameserver/ {print $2}' | paste -sd ' ' -)"
+   ```
+2. Open your network configurations file:
+   ```bash
+   nano /etc/network/interfaces
+   ```
+3. Use the output generated in the previous step to format your file so it looks like this (adjusting variables to match your network adapter name and IP schema):
+   ```text
+   auto enp1s0
+   iface enp1s0 inet static
+       address 192.168.1.21/24
+       gateway 192.168.1.1
+       dns-nameservers 192.168.1.2
+   ```
+4. Save and exit (`Ctrl + O`, then `Ctrl + X`), then restart your networking service:
+   ```bash
+   systemctl restart networking
+   ```
+
+### Step 4: Run the Automated Deployment Script
+Type `exit` to clear the hypervisor console. Open your favorite desktop terminal emulator (like PuTTY, Windows Terminal, or Terminal on macOS) and log back in remotely using your new static IP address.
+
+```bash
+# Log back in as root via your desktop terminal
+ssh root@your_new_static_ip
+
+# Navigate to home directory
+cd ~
+
+# Download and execute the installer script
+# (Replace the link below with your actual GitHub raw script URL once uploaded)
+curl -O [https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/setup_acore.sh](https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/setup_acore.sh)
+chmod +x setup_acore.sh
+./setup_acore.sh
+```
+
+---
+
+## ⌨️ Server Management Shortcuts
+Once the installer completes its tasks, it will inject several helper aliases directly into your terminal interface. You can manage your entire server utilizing these shorthand inputs:
+
+| Command | Action |
+| :--- | :--- |
+| `start` | Launches both Auth and World server background processes in tmux sessions. |
+| `stop` | Instantly and safely kills all background running game server instances. |
+| `wow` | Hooks your active terminal directly into the live **World Server console**. *(Disconnect using `Ctrl+B`, then `D`)* |
+| `auth` | Hooks your active terminal directly into the live **Auth Server console**. *(Disconnect using `Ctrl+B`, then `D`)* |
+| `upgrade-ac` | Fully automates a safe update sequence: stops services, runs a backup, pulls updates, updates db schema, and rebuilds. |
+| `wow-status` | Verifies that the server applications are running and listening on network ports `8085` and `3724`. |
+| `clear-logs` | Safely clears down and truncates all server text logs to recover valuable storage space. |
+| `update` | Grabs the absolute latest updates for the primary AzerothCore repository code from GitHub. |
+| `compile` | Triggers a full, top-to-bottom clean compilation of your core files (ideal for first-time setup). |
+| `build` | Triggers a quick incremental compilation that builds only new modifications or script edits. |
+| `version` | Displays the exact build release version signature hash currently tracking on your installation. |
+| `backup` | Instantly exports a secure tarball archive of your system configuration files and an SQL data dump. |
+| `audit-configs` | Compares your active production server configuration files against the default core layout templates. |
+| `clean` | Clears down local operational caches to resolve occasional complex compiler hiccups. |
+| `db-init` | Re-runs the baseline database design framework installation settings tools. |
+| `maps-get` | Triggers the build framework's utility client to download or check core game asset maps files. |
+| `mods` | Launches the interactive shell menu to toggle or deploy custom community modular options. |
+| `updatemods` | Loops through your active extensions directory and runs an automated git pull update across all modules. |
+| `world` | Opens the main operational settings configuration map directly into nano text editor. |
+| `pb` | Reaches straight inside the playerbot modular configurations parameters inside nano text editor. |
+| `conf` | Displays the built-in server settings dashboard deployment script engine tools. |
+| `ac-test` | Runs the software unit test suites to ensure proper baseline framework stability. |
+
+---
