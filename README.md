@@ -78,6 +78,9 @@ Type `exit` to clear the hypervisor console. Open your favorite desktop terminal
 # Log back in as root via your desktop terminal
 ssh root@your_new_static_ip
 
+# Install curl to grab the script from github
+apt update && apt install curl -y
+
 # Navigate to home directory
 cd ~
 
