@@ -1,6 +1,6 @@
 # 🛠️ Automated AzerothCore + Playerbots Installer for Debian 13
 
-An all-in-one automated script to deploy a pristine **AzerothCore (WoW 3.3.5a) server with integrated Playerbots** on a fresh Debian 13 environment. This project is tailored for home labs, private networks, and a simple install procedure to get up and running with the basics quickly.
+An all-in-one automated script to deploy a pristine **AzerothCore (WoW 3.3.5a) server with integrated Playerbots** on a fresh Debian 13 environment. This project is tailored for home labs, private networks, with a simple install procedure to get up and running with the basics quickly.
 
 🎬 **[Watch the Complete Video Walkthrough on YouTube](YOUR_YOUTUBE_LINK_HERE)**
 
