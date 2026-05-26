@@ -152,6 +152,15 @@ mkdir -p modules
 if [ ! -d "modules/mod-playerbots" ]; then
     git clone https://github.com/mod-playerbots/mod-playerbots.git --branch=master ./modules/mod-playerbots || die "Failed to clone playerbot module."
 fi
+
+DIST_CONF="$HOME/azerothcore-wotlk/conf/dist/config.sh"
+if [ -f "$DIST_CONF" ]; then
+    echo -e "${BLUE}[*] Patching OS distribution target to Debian...${NC}"
+    sed -i 's/# OSDISTRO="ubuntu"/OSDISTRO="debian"/' "$DIST_CONF" || die "Failed to patch OS distribution configuration template."
+else
+    die "Critical Error: Configuration template file not found at $DIST_CONF"
+fi
+
 echo -e "\n${BLUE}[*] Installing Dependencies...${NC}"
 ./acore.sh install-deps || die "acore.sh failed to install dependencies."
 
