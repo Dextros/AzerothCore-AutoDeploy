@@ -60,8 +60,8 @@ To ensure you don't lose track of your server across reboots, assign it a perman
    ```
 3. Use the output generated in the previous step to format your file so it looks like this (adjusting variables to match your network adapter name and IP schema):
    ```text
-   auto enp1s0
-   iface enp1s0 inet static
+   auto enp3s0
+   iface enp3s0 inet static
        address 192.168.1.21/24
        gateway 192.168.1.1
        dns-nameservers 192.168.1.2
