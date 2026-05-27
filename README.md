@@ -19,7 +19,7 @@ Before starting, download the necessary files to your local machine:
 
 ### 1. Server Environment
 * **Operating System:** [Debian 13 AMD64 Netinst ISO](https://mirror.cogentco.com/debian-cd/current/amd64/iso-cd/) *(Note: Avoid the `edu` and `mac` variants).*
-* **Virtualization Software:** You can run this on any hypervisor. Popular choices include **unRaid (VMs)**,  VirtualBox, or VMware Workstation.
+* **Virtualisation Software:** You can run this on any hypervisor. Popular choices include **unRaid (VMs)**,  VirtualBox, or VMware Workstation.
 
 ### 2. Client & Addons
 * **Game Client:** [WotLK 3.3.5a Clean Client via ChromieCraft](https://chromiecraft.com/en/downloads/)
@@ -85,14 +85,13 @@ apt update && apt install curl -y
 cd ~
 
 # Download and execute the installer script
-# (Replace the link below with your actual GitHub raw script URL once uploaded)
 curl -O https://raw.githubusercontent.com/Dextros/AzerothCore-AutoDeploy/refs/heads/main/setup_acore.sh && chmod +x setup_acore.sh && ./setup_acore.sh
 ```
-
+# Follow the on screen instructions to complete the remainder of the set up.
 ---
 
 ## ⌨️ Server Management Shortcuts
-Once the installer completes its tasks, it will inject several helper aliases directly into your terminal interface. You can manage your entire server utilizing these shorthand inputs:
+Once the installer completes its tasks, it will inject several helper aliases directly into your terminal interface. You can manage your entire server utilising these when logged in as the root user:
 
 | Command | Action |
 | :--- | :--- |
