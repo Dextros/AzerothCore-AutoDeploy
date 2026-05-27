@@ -320,23 +320,23 @@ $INSTALL_DIR/env/dist/bin/*.log {
 EOF
 
 # --- 10. Final Initialization ---
-echo -e "\n${BLUE}[*] Initializing Worldserver for the first time...${NC}"
+echo -e "\n${BLUE}[*] Initialising Worldserver for the first time...${NC}"
 bash "$HOME/start_acore.sh"
 
 LOG_FILE_AC="$INSTALL_DIR/env/dist/bin/Server.log"
 TIMEOUT=1200
 ELAPSED=0
 
-echo -e "${GREY}(Waiting for 'World Initialized' signal...)${NC}"
+echo -e "${GREY}(Waiting for 'World Initialised' signal...)${NC}"
 while ! grep -q "World Initialized" "$LOG_FILE_AC" 2>/dev/null; do
     if [ $ELAPSED -gt $TIMEOUT ]; then
-        die "Timeout reached during world initialization."
+        die "Timeout reached during world initialisation."
     fi
     printf "\r${BLUE}.${NC}" ; sleep 5
     ELAPSED=$((ELAPSED + 5))
 done
 
-echo -e "\n${GREEN}[+] Worldserver initialized for the first time!${NC}"
+echo -e "\n${GREEN}[+] Worldserver initialised for the first time!${NC}"
 echo -e "\n${GREEN}[+] Creating the new GM/User account!${NC}"
 
 sleep 3
