@@ -49,12 +49,12 @@ sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-passw
 
 ```
 
-# Now open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in to the server using the IP address above, and as the root user
+### Step 3: Now open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in to the server using the IP address above, and as the root user
 ```bash
 ssh root@ipaddress
 ```
 
-### Step 3: Configure a Static IP Address
+### Step 4: Configure a Static IP Address
 To ensure you don't lose track of your server across reboots, assign the server a permanent static IP address. 
 
 1. Run this helper command to automatically generate the correct network block configuration matching your current network settings:
@@ -78,7 +78,7 @@ To ensure you don't lose track of your server across reboots, assign the server 
    systemctl restart networking
    ```
 
-### Step 4: Run the Automated Deployment Script
+### Step 5: Run the Automated Deployment Script
 Type `exit` to exit from the terminal, and then re-log back in again.
 
 ```bash
@@ -94,7 +94,7 @@ cd ~
 # Download and execute the installer script
 curl -O https://raw.githubusercontent.com/Dextros/AzerothCore-AutoDeploy/refs/heads/main/setup_acore.sh && chmod +x setup_acore.sh && ./setup_acore.sh
 ```
-# Follow the on screen instructions to complete the remainder of the set up.
+### Step 6: Follow the on screen instructions to complete the remainder of the set up.
 ---
 
 ## ⌨️ Server Management Shortcuts
