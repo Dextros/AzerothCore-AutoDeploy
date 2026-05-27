@@ -46,14 +46,16 @@ su root
 ip a
 ```
 
-### Step 3: Now open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in to the server using the IP address above, and as the root user
-
-# Enable root login over SSH and restart the service
-```bash
-sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && systemctl restart sshd
-```
+### Step 3: Now open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in to the server using the IP address above.
 ```bash
 ssh root@ipaddress
+```
+# Enable root login over SSH and restart the service
+```bash
+su root
+```
+```bash
+sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && systemctl restart sshd
 ```
 ### Step 4: Configure a Static IP Address
 To ensure you don't lose track of your server across reboots, assign the server a permanent static IP address. 
