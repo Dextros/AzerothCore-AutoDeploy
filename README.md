@@ -44,16 +44,17 @@ Log directly into your server through your hypervisor console, then elevate to t
 su root
 # Get the current IP address of your network interface (Not the "lo" address)
 ip a
-# Enable root login over SSH and restart the service
-sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && service sshd restart
-
 ```
 
 ### Step 3: Now open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in to the server using the IP address above, and as the root user
+
+# Enable root login over SSH and restart the service
+```bash
+sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && systemctl restart sshd
+```
 ```bash
 ssh root@ipaddress
 ```
-
 ### Step 4: Configure a Static IP Address
 To ensure you don't lose track of your server across reboots, assign the server a permanent static IP address. 
 
