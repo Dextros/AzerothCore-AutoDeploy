@@ -40,11 +40,14 @@ Before starting, download the necessary files to your local machine:
 Log directly into your server through your hypervisor console, then elevate to the root user and unlock remote SSH terminal connections:
 
 ```bash
-# Elevate to root account
+# Elevate to the root account
 su root
-
+# Get the current IP address of your network interface (Not the "lo" address)
+ip a
 # Enable root login over SSH and restart the service
 sed -ie '0,/#PermitRootLogin prohibit-password/s/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && service sshd restart
+# Open your terminal application, such as PuTTY, Windows Terminal or Powershell and log back in remotely using the IP address above, and as the root user
+ssh root@ipaddress
 ```
 
 ### Step 3: Configure a Static IP Address
@@ -60,8 +63,8 @@ To ensure you don't lose track of your server across reboots, assign it a perman
    ```
 3. Use the output generated in the previous step to format your file so it looks like this (adjusting variables to match your network adapter name and IP schema):
    ```text
-   auto enp3s0
-   iface enp3s0 inet static
+   auto enp1s0
+   iface enp1s0 inet static
        address 192.168.1.21/24
        gateway 192.168.1.1
        dns-nameservers 192.168.1.2
@@ -72,7 +75,7 @@ To ensure you don't lose track of your server across reboots, assign it a perman
    ```
 
 ### Step 4: Run the Automated Deployment Script
-Type `exit` to clear the hypervisor console. Open your favorite desktop terminal emulator (like PuTTY, Windows Terminal) and log back in remotely using your new static IP address.
+Type `exit` to exit from the terminal, and then re-log back in again.
 
 ```bash
 # Log back in as root via your desktop terminal
