@@ -72,7 +72,7 @@ To ensure you don't lose track of your server across reboots, assign it a perman
    ```
 
 ### Step 4: Run the Automated Deployment Script
-Type `exit` to clear the hypervisor console. Open your favorite desktop terminal emulator (like PuTTY, Windows Terminal, or Terminal on macOS) and log back in remotely using your new static IP address.
+Type `exit` to clear the hypervisor console. Open your favorite desktop terminal emulator (like PuTTY, Windows Terminal) and log back in remotely using your new static IP address.
 
 ```bash
 # Log back in as root via your desktop terminal
