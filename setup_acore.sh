@@ -106,7 +106,6 @@ ACCT_PASS=${ACCT_PASS:-DKI}
 # --- 4. Expansion & Bot Configurator ---
 echo -e "\n${BLUE}[*] Warcraft Expansion & Playerbot Configuration...${NC}"
 
-# 1. Determine the core expansion era boundaries
 echo -e "\n${BLUE}[*] Which expansion do you want the server to start on...${NC}"
 echo "1) Vanilla [60] | 2) TBC [70] | 3) WotLK [80] (Default)"
 read -p "Selection [3]: " ERA_CHOICE
@@ -116,7 +115,6 @@ case ${ERA_CHOICE:-3} in
     *) ERA="wotlk";   EXP_MAX_LVL=80; EXPANSION=2; DK_DISABLE=0; TALENT_LIMIT=0 ;;
 esac
 
-# 2. Determine the starting progression ecosystem
 read -p "[?] Do you want a Fresh Server experience (Bots start at Lvl 1)? (y/n) [n]: " NEW_SERVER
 NEW_SERVER=${NEW_SERVER:-n}
 
@@ -129,6 +127,11 @@ else
     BOT_MAX_LVL=$EXP_MAX_LVL
     RANDOM_LVLS=1
 fi
+
+read -p "[?] How many bots do you want? [Default: 500]: " BOT_COUNT
+BOT_COUNT=${BOT_COUNT:-500}
+MIN_BOTS=$((BOT_COUNT - 50))
+MAX_BOTS=$((BOT_COUNT + 50))
 
 read -p "[?] Bot Login Behavior (1: Logs on when players do, 2: Bots are always online) [2]: " LOGIN_CHOICE
 ONLY_WITH_PLAYER=$([[ "${LOGIN_CHOICE:-2}" == "1" ]] && echo 1 || echo 0)
