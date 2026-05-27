@@ -134,16 +134,17 @@ To use these, log into the game client on an account with GM permissions, hit En
 ### 🌟 Essential Game Master (GM) Commands
 
 | Command Syntax          | What it does                                                  | Example / Tip                                            |
-|-------------------------|---------------------------------------------------------------|----------------------------------------------------------|
-| `.tele $location`       | Instantly teleports your character to major hubs or zones.    | `.tele stormwind` or `.tele orgrimmar`                   |
-| `.tele group $location` | Instantly teleports your group to major hubs or zones.        | `.tele group stormwind` or `.tele group orgrimmar`       |
-| `.gps`                  | Displays your exact grid coordinates and Zone ID.             | Great for finding coordinates to use with other scripts. |
-| `.additem #id`          | Spawns a specific item directly into your bags.               | `.additem 49623` *(Spawns Shadowmourne)*                 |
-| `.modify money #amount` | Adds copper to your character (`10000` = 1 Gold).             | `.modify money 5000000` *(Adds 500 Gold)*                |
-| `.modify speed #value`  | Changes your running/flying speed (Default speed is `1`).     | `.modify speed 5` *(Makes you run 5x faster)*            |
-| `.revive`               | Restores full health/mana and resurrects you if you are dead. | Target a dead player or bot to resurrect them instead.   |
-| `.lookup item $name`    | Searches the database for an item's numerical ID code.        | `.lookup item Sulfuras`                                  |
-| `.lookup quest $name`   | Searches for a quest ID to help skip broken/stuck quests.     | `.lookup quest The Lich King`                            |
+|-------------------------  |---------------------------------------------------------------|----------------------------------------------------------|
+| `.tele $location`         | Instantly teleports your character to major hubs or zones.    | `.tele stormwind` or `.tele orgrimmar`                   |
+| `.tele group $location`   | Instantly teleports your group to major hubs or zones.        | `.tele group stormwind` or `.tele group orgrimmar`       |
+| `account create name pass`| Creates a new account that can be logged into.                | `account create dki dki` - Do this in the wow console    |
+| `.gps`                    | Displays your exact grid coordinates and Zone ID.             | Great for finding coordinates to use with other scripts. |
+| `.additem #id`            | Spawns a specific item directly into your bags.               | `.additem 49623` *(Spawns Shadowmourne)*                 |
+| `.modify money #amount`   | Adds copper to your character (`10000` = 1 Gold).             | `.modify money 5000000` *(Adds 500 Gold)*                |
+| `.modify speed #value`    | Changes your running/flying speed (Default speed is `1`).     | `.modify speed 5` *(Makes you run 5x faster)*            |
+| `.revive`                 | Restores full health/mana and resurrects you if you are dead. | Target a dead player or bot to resurrect them instead.   |
+| `.lookup item $name`      | Searches the database for an item's numerical ID code.        | `.lookup item Sulfuras`                                  |
+| `.lookup quest $name`     | Searches for a quest ID to help skip broken/stuck quests.     | `.lookup quest The Lich King`                            |
 ### 🗺️ World, Npc, & Instance Management
 
 - .npc add #creatureid
