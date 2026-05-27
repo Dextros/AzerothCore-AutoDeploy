@@ -89,7 +89,7 @@ Type `exit` to exit from the terminal, and then re-log back in again.
 ssh root@your_new_static_ip
 
 # Install curl to grab the script from github
-apt update && apt install curl -y
+apt update && apt install resolvconf curl -y
 
 # Navigate to home directory
 cd ~
