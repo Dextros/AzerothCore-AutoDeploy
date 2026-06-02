@@ -9,18 +9,17 @@ Using WSL2 allows you to run the server locally on your gaming machine without a
 ## 💻 Step 1: Prepare Windows & Hardware Virtualization
 
 Before installing Linux components, hardware virtualization must be enabled at the motherboard layer.
-
-### 1. Enable Virtualization in your BIOS/UEFI
-Reboot your PC, enter your BIOS setup menu, and locate the CPU virtualization flag based on your processor type:
-* **Intel Based CPUs:** Enable **Intel Virtualization Technology**, **VT-x**, or **Virtualization**.
-* **AMD Based CPUs:** Enable **SVM Mode** or **AMD-V**.
-
-*Save settings and reboot into Windows.*
-
-### 2. Verify Virtualization Status
+### 1. Verify Virtualization Status
 1. Open Windows Task Manager (`Ctrl + Shift + Esc`).
 2. Navigate to the **Performance** tab and click on **CPU**.
 3. Look at the bottom right metrics and verify that **Virtualization: Enabled** is visible.
+
+### 2. Enable Virtualization in your BIOS/UEFI
+If not enabled, reboot your PC, enter your BIOS setup menu, and locate the CPU virtualization flag based on your processor type:
+* **Intel Based CPUs:** Enable **Intel Virtualization Technology**, **VT-x**, or **Virtualization**.
+* **AMD Based CPUs:** Enable **SVM Mode** or **AMD-V**.
+
+*Save settings and reboot into Windows and re-verify.*
 
 ---
 
