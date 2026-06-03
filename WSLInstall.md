@@ -37,7 +37,7 @@ If not enabled, reboot your PC, enter your BIOS setup menu, and locate the CPU v
 
 ## 🧠 Step 3: Optimize WSL2 Resource Limits (Prevent RAM Overallocation)
 
-By default, WSL2 can consume up to 75% or more of your total host system memory, which can starve your Windows environment during intensive compiler tasks. We will constrain it to a stable 8GB pool.
+By default, WSL2 can consume up to 75% or more of your total host system memory, which can starve your Windows environment during intensive compiler tasks. We will constrain it to a stable 8GB pool - I have 32GB of Ram, so please choose your own number.
 
 1. Open a fresh **PowerShell** window.
 2. Copy, paste, and run the following command block to instantly generate a custom resource configuration file (`.wslconfig`) in your Windows user profile folder:
@@ -58,11 +58,11 @@ memory=8GB
    wsl --install -d Debian
    ```
 2. A new console window will pop open. Follow the prompts to set up your primary Linux username and password.
-3. Bring the entire internal package matrix up to date:
+3. Bring the package manager up to date and install any updates:
    ```bash
    sudo apt update && sudo apt upgrade -y
    ```
-4. Assign a dedicated root system password to unlock internal script tasks:
+4. Assign a dedicated root system password:
    ```bash
    sudo su
    ```
@@ -82,7 +82,10 @@ memory=8GB
    ```bash
    sudo apt update && sudo apt install curl -y
    ```
-2. Drop into the root context, pull your specialized automation framework repository, flip permissions, and initialize deployment:
+2. Drop into the root home directory, pull your specialized automation framework repository, flip permissions, and initialize deployment:
+   ```bash
+   su root
+   ```
    ```bash
    cd ~
    ```
@@ -95,7 +98,7 @@ When the script pauses and asks you to enter your **Server Network IP or Local A
 ```text
 127.0.0.1
 ```
-
+Continue on and answer the questions with the settings that you want. 
 ---
 
 ## 🎮 Step 6: Connecting Your WoW Client
